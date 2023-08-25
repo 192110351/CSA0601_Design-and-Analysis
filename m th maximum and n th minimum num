@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+    
+    int arr[n];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    int m, n;
+    printf("Enter the value of M: ");
+    scanf("%d", &m);
+    printf("Enter the value of N: ");
+    scanf("%d", &n);
+    
+    bubbleSort(arr, n);
+    
+    if (m <= n && m <= n) {
+        printf("Mth maximum: %d\n", arr[n - m]);
+        printf("Nth minimum: %d\n", arr[n - n]);
+        
+        int sum = arr[n - m] + arr[n - n];
+        int diff = arr[n - m] - arr[n - n];
+        
+        printf("Sum: %d\n", sum);
+        printf("Difference: %d\n", diff);
+    } else {
+        printf("Invalid values of M and/or N.\n");
+    }
+    
+    return 0;
+}
